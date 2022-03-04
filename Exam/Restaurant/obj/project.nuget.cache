@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yXDj6+7t5+IcMjtYpBsfFMKulnfRp+Zf/pfri/A+fDC4PM3eY/6i/hku3GN4y5fgnaT+CYiGwTsmEkVirEmGTA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tadas.valutis\\Desktop\\CodeAcademy\\C# Advanced exam\\Exam\\Restaurant\\Restaurant.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tadas.valutis\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}
