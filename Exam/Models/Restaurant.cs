@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    // Testing
+    // Testing improvements branch1
     public class Restaurant
     {
         public static string filesDir = @"C:\Users\tadas.valutis\Desktop\CodeAcademy\C# Advanced exam\CSVfiles\";
@@ -24,7 +24,7 @@ namespace Models
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("What actions would you like to perform:");
             Console.WriteLine("Select an option:");
-            Console.WriteLine("Check table availability [1] \n Book table [2] \n Free table [3] \n Order food [4] \n Payments [5] \n Exit menu [6]");
+            Console.WriteLine("Check table availability [1] \nBook table [2] \nFree table [3] \nOrder food [4] \nPayments [5] \n\nExit menu [6]");
             
 
             var optionSelected = readInt();
