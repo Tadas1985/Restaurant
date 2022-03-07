@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace Models
 
 
 
-    public class Order
+    public class Order: IEmail
     {
         public int TableId;
 
@@ -41,6 +42,8 @@ namespace Models
         {
             foodList.Add(new OrderItem(foodID, amount));
         }
+
+        // Mano Metodas
 
         public void Print()
         {
@@ -70,8 +73,8 @@ namespace Models
             var email = Console.ReadLine();
             if (email != "")
             {
-                
-                SendCustomerReceiptToEmail(receipt, email);
+
+                SendEmail(receipt, email);
             }
         }
         public void WriteRestaurantReceiptToFile( string receipt)
@@ -87,5 +90,27 @@ namespace Models
         {
             Console.WriteLine($"Sending email to {email}");
         }
+
+        public void SendEmail(string receipt, string email)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("tadas1985@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Test email";
+                //mail.Attachments(receipt);
+                mail.Body = "<h1>This is body</h1>";
+                mail.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new System.Net.NetworkCredential("testc.testing123@gmail.com", "Tadas19850913");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+
+                }
+            }
+        }
+
+
     }
 }
