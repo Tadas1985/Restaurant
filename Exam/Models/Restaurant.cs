@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    // Testing
     public class Restaurant
     {
         public static string filesDir = @"C:\Users\tadas.valutis\Desktop\CodeAcademy\C# Advanced exam\CSVfiles\";
