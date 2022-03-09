@@ -12,6 +12,7 @@ namespace Restaurant
         {
             Models.Restaurant menu = new Models.Restaurant();
             Food.ReadFromCSV(Models.Restaurant.filesDir + "Food.csv");
+            Drinks.ReadDrinksFromCSVFile(Models.Restaurant.filesDir + "Drinks.csv");
             Console.WriteLine("Welcome to a restaurant management system");
            
             while (true)
@@ -31,9 +32,12 @@ namespace Restaurant
                         menu.OrderFood();
                         break;
                     case 5:
-                        menu.Payments();
+                        menu.OrderDrinks();
                         break;
                     case 6:
+                        menu.Payments();
+                        break;
+                    case 7:
                         menu.Exit();
                         break;
                 }

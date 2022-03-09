@@ -49,7 +49,7 @@ namespace Models
                 Console.WriteLine(listOfAllDrinks[i].Name + " [" + i + "]");
 
             }
-            //Console.WriteLine($"Back to main menu [{listOfAllDrinks.Count}]");
+            Console.WriteLine($"Back to main menu [{listOfAllDrinks.Count}]");
 
         }
     }

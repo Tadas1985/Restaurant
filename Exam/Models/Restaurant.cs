@@ -24,7 +24,7 @@ namespace Models
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("What actions would you like to perform:");
             Console.WriteLine("Select an option:");
-            Console.WriteLine("Check table availability [1] \nBook table [2] \nFree table [3] \nOrder food [4] \nPayments [5] \n\nExit menu [6]");
+            Console.WriteLine("Check table availability [1] \nBook table [2] \nFree table [3] \nOrder food [4] \nOrder Drinks [5] \nPayments [6] \n\nExit menu [7]");
             
 
             var optionSelected = readInt();
@@ -76,6 +76,30 @@ namespace Models
            
             
             
+        }
+        public void OrderDrinks()
+        {
+            Console.WriteLine("Which table are you serving?");
+            var servingTableID = readInt();
+            var servingTable = FindTableByID(servingTableID);
+            while (true)
+            {
+                Drinks.PrintDrinksMenu();
+
+                Console.WriteLine("What kind of drink would you like to order");
+                var foodChoice = readInt();
+                if (foodChoice == Drinks.listOfAllDrinks.Count)
+                {
+                    return;
+                }
+                Console.WriteLine($"How many item {Drinks.listOfAllDrinks[foodChoice].Name} would you like to order?");
+                var amountOfFoodItems = readInt();
+                servingTable.order.AddFood(foodChoice, amountOfFoodItems);
+            }
+
+
+
+
         }
         public void Payments()
         { 
