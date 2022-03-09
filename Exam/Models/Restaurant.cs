@@ -36,7 +36,7 @@ namespace Models
             foreach (var item in tables)
             {
                 var availability = item.IsFree() ? "Free" : "Busy";
-                Console.WriteLine($" {item.TableID} {item.Seats}, {availability}");
+                Console.WriteLine($" Table Number {item.TableID}, Table seats {item.Seats}, {availability}");
             }
         }
         public void BookTable()
@@ -61,6 +61,7 @@ namespace Models
             while (true) 
             {
                 Food.PrintMenu();
+                
                 Console.WriteLine("What kind of measl would you like to order");
                 var foodChoice = readInt();
                 if (foodChoice == Food.listOfAllFoods.Count)
