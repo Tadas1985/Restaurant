@@ -50,31 +50,17 @@ namespace Models
         public void Print()
         {
             string receipt = $"\n\n\n           Your receipt: \nTable ID {TableId}\n {DateTime.Now} \n";
-            
+
             decimal totalOrderPrice = 0;
             foreach (OrderItem item in foodList)
             {
                 var foodItem = Food.listOfAllFoods[item.Id];
-                //var drinkItem = Drinks.ListOfAllDrinks[item.Id]; // mano eilute istrink jei neveiks
-                
-
                 decimal totalItemPrice = item.Amount * foodItem.Price;
-                //decimal totalIDrinktemPrice = item.Amount * drinkItem.Price; // sita irgi mano
-                receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.   {totalItemPrice} Eur.";//\n{drinkItem.Name}, {item.Amount} X {drinkItem.Price}";
-                
+                receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.        {totalItemPrice} Eur.\n";
 
                 totalOrderPrice += totalItemPrice;
 
             }
-            //foreach (OrderItem item in drinkList)
-            //{
-            //    var foodItem = Food.listOfAllFoods[item.Id];
-            //    decimal totalItemPrice = item.Amount * foodItem.Price;
-            //    receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.        {totalItemPrice} Eur.\n";
-
-            //    totalOrderPrice += totalItemPrice;
-
-            //}
             receipt += $"Total Price: {totalOrderPrice} Eur. \n";
             Console.WriteLine(receipt);
 
@@ -89,8 +75,8 @@ namespace Models
             var email = Console.ReadLine();
             if (email != "")
             {
-                
-                SendCustomerReceiptToEmail(receipt, email);
+
+                SendEmail(receipt, email);
             }
         }
         public void WriteRestaurantReceiptToFile( string receipt)
