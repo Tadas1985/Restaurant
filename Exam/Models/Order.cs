@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,10 @@ namespace Models
         {
             foodList.Add(new OrderItem(foodID, amount));
         }
+        //public void AddDrinks(int foodID, int amount)
+        //{
+        //    drinkList.Add(new OrderItem(foodID, amount));
+        //}
 
         public void Print()
         {
@@ -50,12 +55,26 @@ namespace Models
             foreach (OrderItem item in foodList)
             {
                 var foodItem = Food.listOfAllFoods[item.Id];
+                //var drinkItem = Drinks.ListOfAllDrinks[item.Id]; // mano eilute istrink jei neveiks
+                
+
                 decimal totalItemPrice = item.Amount * foodItem.Price;
-                receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.        {totalItemPrice} Eur.\n";
+                //decimal totalIDrinktemPrice = item.Amount * drinkItem.Price; // sita irgi mano
+                receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.   {totalItemPrice} Eur.";//\n{drinkItem.Name}, {item.Amount} X {drinkItem.Price}";
+                
 
                 totalOrderPrice += totalItemPrice;
 
             }
+            //foreach (OrderItem item in drinkList)
+            //{
+            //    var foodItem = Food.listOfAllFoods[item.Id];
+            //    decimal totalItemPrice = item.Amount * foodItem.Price;
+            //    receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.        {totalItemPrice} Eur.\n";
+
+            //    totalOrderPrice += totalItemPrice;
+
+            //}
             receipt += $"Total Price: {totalOrderPrice} Eur. \n";
             Console.WriteLine(receipt);
 
@@ -86,6 +105,30 @@ namespace Models
         public void SendCustomerReceiptToEmail( string receipt, string email)
         {
             Console.WriteLine($"Sending email to {email}");
+        }
+        public void SendEmail(string receipt, string email)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("rasa@nauckunas.lt");
+                mail.To.Add(email);
+                mail.Subject = "Receipt";
+                //mail.Attachments(receipt);
+                mail.Body = "<h1>Your receipt</h1>";
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(@"C:\Users\tadas.valutis\Desktop\CodeAcademy\C# Advanced exam\CSVfiles\CustomerReceipt.txt");
+                mail.Attachments.Add(attachment);
+
+                
+                mail.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new System.Net.NetworkCredential("rasa@nauckunas.lt", "morka?ryza14");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                    //testc.testing123@gmail.com
+                }
+            }
         }
     }
 }

@@ -16,14 +16,28 @@ namespace Models
         public List<Table> tables;
         public static int readInt()
         {
-            return int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int result))
+            {
+
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("You entered ivalid value, press enter to continue");
+                Console.WriteLine("Please enter a valid choise");
+                Console.ReadKey();
+                return 0;
+
+            }
+            //return int.Parse(Console.ReadLine());
+
         }
         public int SystemMenuOptions()
         {
             Console.WriteLine("------------------------------------------");
-            Console.WriteLine("What actions would you like to perform:");
-            Console.WriteLine("Select an option:");
-            Console.WriteLine("Check table availability [1] \nBook table [2] \nFree table [3] \nOrder food [4] \nPayments [5] \n\nExit menu [6]");
+            Console.WriteLine("What actions would you like to perform?\n");
+            Console.WriteLine("Select an option:\n");
+            Console.WriteLine("\tCheck table availability [1] \n\tBook table [2] \n\tFree table [3] \n\tOrder food [4] \n\tOrder Drinks [5]\n\tPayments [6] \n\n\tExit menu [7]");
             
 
             var optionSelected = readInt();
@@ -60,7 +74,7 @@ namespace Models
             while (true) 
             {
                 Food.PrintMenu();
-                Console.WriteLine("What kind of measl would you like to order");
+                Console.WriteLine("What kind of meal would you like to order");
                 var foodChoice = readInt();
                 if (foodChoice == Food.listOfAllFoods.Count)
                 {   
@@ -69,11 +83,26 @@ namespace Models
                 Console.WriteLine($"How many item {Food.listOfAllFoods[foodChoice].Name} would you like to order?");
                 var amountOfFoodItems = readInt();
                 servingTable.order.AddFood(foodChoice, amountOfFoodItems);
+            }            
+        }
+        public void OrderDrinks()
+        {
+            Console.WriteLine("Which table are you serving?");
+            var servingTableID = readInt();
+            var servingTable = FindTableByID(servingTableID);
+            while (true)
+            {
+                Drinks.PrintDrinksMenu();
+                Console.WriteLine("What kind of drinks would you like to order");
+                var drinkChoice = readInt();
+                if (drinkChoice == Drinks.ListOfAllDrinks.Count)
+                {
+                    return;
+                }
+                Console.WriteLine($"How many item {Drinks.ListOfAllDrinks[drinkChoice].Name} would you like to order?");
+                var amountOfFoodItems = readInt();
+                servingTable.order.AddFood(drinkChoice, amountOfFoodItems);
             }
-            
-           
-            
-            
         }
         public void Payments()
         { 
@@ -88,8 +117,7 @@ namespace Models
             foreach (var table in tables)
             {
                 if (table.TableID == id)
-                {
-                    
+                {                   
                     return table;   
                 }
             }

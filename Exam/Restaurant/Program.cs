@@ -20,11 +20,12 @@ namespace Restaurant
          
 
             Food.ReadFromCSV(Models.Restaurant.filesDir + "Food.csv");
+            Drinks.ReadFromCSV(Models.Restaurant.filesDir + "Drinks.csv");
 
 
             // Put data in to the food object list
-  
-     
+
+
 
             // Put data in to the drinks object list
             //var drinks = new List<Drinks>();
@@ -63,9 +64,12 @@ namespace Restaurant
                         menu.OrderFood();
                         break;
                     case 5:
-                        menu.Payments();
-                        break;
+                        menu.OrderDrinks();
+                        break;                   
                     case 6:
+                    menu.Payments();
+                        break;
+                    case 7:
                         menu.Exit();
                         break;
                 }
