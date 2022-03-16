@@ -76,7 +76,7 @@ namespace Models
             if (email != "")
             {
 
-                SendEmail(receipt, email);
+                SendEmail(email);
             }
         }
         public void WriteRestaurantReceiptToFile( string receipt)
@@ -92,7 +92,7 @@ namespace Models
         {
             Console.WriteLine($"Sending email to {email}");
         }
-        public void SendEmail(string receipt, string email)
+        public void SendEmail(string email)
         {
             using (MailMessage mail = new MailMessage())
             {
@@ -109,7 +109,7 @@ namespace Models
                 mail.IsBodyHtml = true;
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtp.Credentials = new System.Net.NetworkCredential("rasa@nauckunas.lt", "morka?ryza14");
+                    smtp.Credentials = new System.Net.NetworkCredential(email, "password");
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
                     //testc.testing123@gmail.com

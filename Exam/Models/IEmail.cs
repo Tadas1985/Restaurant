@@ -8,6 +8,6 @@ namespace Models
 {
     internal interface IEmail
     {
-        public void SendCustomerReceiptToEmail(string receipt, string email);
+        public void SendCustomerReceiptToEmail(string email);
     }
 }

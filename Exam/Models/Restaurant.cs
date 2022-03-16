@@ -49,7 +49,7 @@ namespace Models
             foreach (var item in tables)
             {
                 var availability = item.IsFree() ? "Free" : "Busy";
-                Console.WriteLine($" {item.TableID} {item.Seats}, {availability}");
+                Console.WriteLine($"Table number: {item.TableID} Number of seats {item.Seats}, {availability}");
             }
         }
         public void BookTable()
