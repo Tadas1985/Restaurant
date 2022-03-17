@@ -37,7 +37,7 @@ namespace Models
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("What actions would you like to perform?\n");
             Console.WriteLine("Select an option:\n");
-            Console.WriteLine("\tCheck table availability [1] \n\tBook table [2] \n\tFree table [3] \n\tOrder food [4] \n\tOrder Drinks [5]\n\tPayments [6] \n\n\tExit menu [7]");
+            Console.WriteLine("\tCheck table availability [1] \n\tBook table [2] \n\tFree table [3] \n\tOrder food [4] \n\tOrder drinks [5] \n\n\tExit menu [6]");
             
 
             var optionSelected = readInt();
@@ -103,9 +103,6 @@ namespace Models
                 var amountOfFoodItems = readInt();
                 servingTable.order.AddFood(drinkChoice, amountOfFoodItems);
             }
-        }
-        public void Payments()
-        { 
         }
         public void Exit()
         {

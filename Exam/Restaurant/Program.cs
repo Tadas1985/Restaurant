@@ -65,11 +65,8 @@ namespace Restaurant
                         break;
                     case 5:
                         menu.OrderDrinks();
-                        break;                   
-                    case 6:
-                    menu.Payments();
                         break;
-                    case 7:
+                    case 6:
                         menu.Exit();
                         break;
                 }

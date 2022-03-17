@@ -42,10 +42,7 @@ namespace Models
         {
             foodList.Add(new OrderItem(foodID, amount));
         }
-        //public void AddDrinks(int foodID, int amount)
-        //{
-        //    drinkList.Add(new OrderItem(foodID, amount));
-        //}
+        
 
         public void Print()
         {
