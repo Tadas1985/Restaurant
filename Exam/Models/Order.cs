@@ -56,7 +56,6 @@ namespace Models
                 receipt += $"{foodItem.Name}, {item.Amount} X {foodItem.Price} Eur.        {totalItemPrice} Eur.\n";
 
                 totalOrderPrice += totalItemPrice;
-
             }
             receipt += $"Total Price: {totalOrderPrice} Eur. \n";
             Console.WriteLine(receipt);
@@ -72,13 +71,11 @@ namespace Models
             var email = Console.ReadLine();
             if (email != "")
             {
-
                 SendEmail(email);
             }
         }
         public void WriteRestaurantReceiptToFile( string receipt)
         {
-
             File.AppendAllText(Restaurant.filesDir + "RestaurantReceipt.txt", receipt);
         }
         public void WriteCustomerReceiptToFile( string receipt)

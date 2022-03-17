@@ -11,44 +11,12 @@ namespace Restaurant
         static void Main(string[] args)
         {
             Models.Restaurant menu = new Models.Restaurant();
-            // Get raw CSV data
-            
-            //string[] drinksCSVLines = File.ReadAllLines(csvDir + "Drinks.csv");
-            //string[] tablesCSVLines = File.ReadAllLines(csvDir + "Tables.csv");
-
-          
-         
-
             Food.ReadFromCSV(Models.Restaurant.filesDir + "Food.csv");
             Drinks.ReadFromCSV(Models.Restaurant.filesDir + "Drinks.csv");
-
-
-            // Put data in to the food object list
-
-
-
-            // Put data in to the drinks object list
-            //var drinks = new List<Drinks>();
-            //for (int i = 1; i < drinksCSVLines.Length; i++)
-            //{
-            //    Drinks d = new Drinks(drinksCSVLines[i]);
-            //    drinks.Add(d);                
-            //}
-
-            //// Put data in to the tables object list
-            //var tables = new List<Tables>();
-            //for (int i = 1; i < tablesCSVLines.Length; i++)
-            //{
-            //    Tables t = new Tables(tablesCSVLines[i]) ;
-            //    tables.Add(t);
-            //}           
-
-
             Console.WriteLine("Welcome to a restaurant management system");
            
             while (true)
-            {
-                
+            {              
                 switch (menu.SystemMenuOptions())
                 {
                     case 1:
@@ -69,8 +37,7 @@ namespace Restaurant
                     case 6:
                         menu.Exit();
                         break;
-                }
-                
+                }              
             }
         }
     }

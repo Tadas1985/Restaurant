@@ -24,8 +24,6 @@ namespace Models
             this.Price = int.Parse(data[2]);
         }
 
-      
-
         public static List<Drinks> ListOfAllDrinks;
         public int ID { get; set; }
         public string Name { get; set; }

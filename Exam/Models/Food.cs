@@ -35,8 +35,6 @@ namespace Models
             for (int i = 1; i < foodCSVLines.Length; i++)
             {
                 var f = new Food(foodCSVLines[i]);
-
-
                 listOfAllFoods.Add(f);
             }
         }
@@ -45,10 +43,8 @@ namespace Models
             for (int i = 0; i < listOfAllFoods.Count; i++)
             {
                 Console.WriteLine(listOfAllFoods[i].Name + " [" + i + "]");
-
             }
             Console.WriteLine($"Back to main menu [{listOfAllFoods.Count}]");
-
         }
     }
 }

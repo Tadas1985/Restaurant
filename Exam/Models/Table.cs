@@ -17,7 +17,6 @@ namespace Models
 
             order = null;
         }
-
        
         public int TableID { get; }
       
@@ -31,7 +30,6 @@ namespace Models
         {
              order = new Order();  
         }
-
         public void FreeTable()
         {
             order.Print();
